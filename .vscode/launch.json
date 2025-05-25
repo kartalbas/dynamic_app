@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Launch Dynamic App",
+            "request": "launch",
+            "type": "dart",
+            "program": "${workspaceFolder}/lib/main.dart",
+            "env": {
+                "FLUTTER_CONFIG_PATH": "${workspaceFolder}/assets/app_config.yaml"
+            }
+        },
+        {
+            "name": "Launch Dynamic App (Web)",
+            "request": "launch",
+            "type": "dart",
+            "program": "${workspaceFolder}/lib/main.dart",
+            "args": [
+                "-d",
+                "web-server"
+            ],
+            "env": {
+                "FLUTTER_CONFIG_PATH": "${workspaceFolder}/assets/app_config.yaml"
+            }
+        }
+    ]
+}

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'json_theme.dart';
 import 'json_router.dart';
-import 'json_widget_tree.dart';
 
 class DynamicApp extends StatelessWidget {
   final Map<String, dynamic> config;
