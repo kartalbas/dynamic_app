@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'base_widget.dart';
-import '../utils/network_utils.dart';
+import '../actions/action_registry.dart';
 
 class ElevatedButtonWidget implements BaseDynamicWidget {
   @override
@@ -17,16 +17,26 @@ class ElevatedButtonWidget implements BaseDynamicWidget {
         onPressed: () async {
           if (node['action'] != null) {
             final action = node['action'];
-            if (action['type'] == 'login') {
-              final username = controllers['username']?.text ?? '';
-              final password = controllers['password']?.text ?? '';
-              await NetworkUtils.login(context, username, password);
+            final actionType = action['type'];
+
+            if (actionType != null) {
+              await ActionRegistry.executeAction(
+                actionType,
+                context,
+                action,
+                controllers,
+                boolControllers,
+              );
               return;
             }
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Action: ${node['action']['type']}')),
-            );
           }
+
+          // Fallback for actions without type
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Action: ${node['action']?['type'] ?? 'unknown'}'),
+            ),
+          );
         },
         child: Text(node['text'] ?? 'Button'),
       ),

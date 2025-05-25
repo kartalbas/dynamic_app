@@ -49,11 +49,6 @@ routes:
             text: "Login"
             action:
               type: "login"
-          - widget: "TextButton"
-            text: "Go to Dashboard"
-            onPressed:
-              type: "navigate"
-              route: "/dashboard"
 
   "/dashboard":
     widget: "Scaffold"

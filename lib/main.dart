@@ -1,4 +1,5 @@
 import 'package:campus_sheba/dynamic_app.dart';
+import 'package:campus_sheba/networking/network_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:yaml/yaml.dart';
@@ -12,6 +13,12 @@ void main() async {
   final YamlMap yamlConfig = loadYaml(configString);
   // Convert YamlMap to Map<String, dynamic> recursively
   final Map<String, dynamic> config = _convertYamlToMap(yamlConfig);
+
+  // Initialize NetworkUtils with endpoints from config
+  if (config['endpoints'] != null) {
+    NetworkUtils.initialize(config['endpoints']);
+  }
+
   runApp(DynamicApp(config: config));
 }
 
