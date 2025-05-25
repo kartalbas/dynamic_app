@@ -1,0 +1,111 @@
+routes:
+  "/":
+    widget: "Scaffold"
+    appBar:
+      widget: "AppBar"
+      title:
+        widget: "Text"
+        data: "Login"
+    body:
+      widget: "SingleChildScrollView"
+      child:
+        widget: "Column"
+        spacing: 16
+        mainAxisAlignment: "center"
+        children:
+          - widget: "Text"
+            data: "Welcome to Dynamic App"
+            style: "heading"
+          - widget: "TextField"
+            controller: "username"
+            decoration:
+              hintText: "Username"
+          - widget: "TextField"
+            controller: "password"
+            obscureText: true
+            decoration:
+              hintText: "Password"
+          - widget: "Row"
+            children:
+              - widget: "Checkbox"
+                controller: "rememberMe"
+              - widget: "Text"
+                data: "Remember me"
+          - widget: "ElevatedButton"
+            text: "Login"
+            action:
+              type: "login"
+
+  "/dashboard":
+    widget: "Scaffold"
+    appBar:
+      widget: "AppBar"
+      title:
+        widget: "Text"
+        data: "Dashboard"
+      actions:
+        - widget: "IconButton"
+          icon: "logout"
+          action:
+            type: "logout"
+    body:
+      widget: "Column"
+      spacing: 20
+      children:
+        - widget: "Text"
+          data: "Welcome to Dashboard"
+          style: "heading"
+        - widget: "Row"
+          children:
+            - widget: "ElevatedButton"
+              text: "Load Profile"
+              action:
+                type: "loadProfile"
+            - widget: "Padding"
+              padding: 8
+              child:
+                widget: "ElevatedButton"
+                text: "Show Notifications"
+                action:
+                  type: "showNotifications"
+        - widget: "GestureDetector"
+          action:
+            type: "showMessage"
+            message: "Dashboard tapped!"
+          child:
+            widget: "Padding"
+            padding:
+              top: 16
+              bottom: 16
+              left: 32
+              right: 32
+            child:
+              widget: "Text"
+              data: "Tap me!"
+              style: "caption"
+        - widget: "Center"
+          child:
+            widget: "TextButton"
+            text: "Back to Login"
+            action:
+              type: "navigate"
+              target: "/"
+
+  "/profile":
+    widget: "Scaffold"
+    appBar:
+      widget: "AppBar"
+      title:
+        widget: "Text"
+        data: "Profile"
+    body:
+      widget: "Column"
+      children:
+        - widget: "Text"
+          data: "User Profile"
+          style: "heading"
+        - widget: "TextButton"
+          text: "Back to Dashboard"
+          action:
+            type: "navigate"
+            target: "/dashboard"

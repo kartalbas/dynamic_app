@@ -1,0 +1,137 @@
+actions:
+  # Navigation Actions
+  navigate:
+    type: "navigation"
+    description: "Navigate to a different route"
+    parameters:
+      - name: "target"
+        type: "string"
+        required: true
+        description: "Target route path"
+      - name: "replace"
+        type: "boolean"
+        required: false
+        default: false
+        description: "Replace current route instead of pushing"
+
+  # Authentication Actions
+  login:
+    type: "authentication"
+    description: "Authenticate user with credentials"
+    endpoint: "login"
+    onSuccess:
+      type: "navigate"
+      target: "/dashboard"
+    onFailure:
+      type: "showMessage"
+      messageType: "error"
+
+  logout:
+    type: "authentication"
+    description: "Log out current user"
+    endpoint: "logout"
+    onSuccess:
+      type: "navigate"
+      target: "/"
+      replace: true
+    onFailure:
+      type: "showMessage"
+      messageType: "error"
+
+  # Data Actions
+  loadProfile:
+    type: "data"
+    description: "Load user profile data"
+    endpoint: "profile"
+    onSuccess:
+      type: "navigate"
+      target: "/profile"
+    onFailure:
+      type: "showMessage"
+      messageType: "error"
+
+  updateProfile:
+    type: "data"
+    description: "Update user profile"
+    endpoint: "updateProfile"
+    onSuccess:
+      type: "showMessage"
+      message: "Profile updated successfully"
+      messageType: "success"
+    onFailure:
+      type: "showMessage"
+      messageType: "error"
+
+  showNotifications:
+    type: "data"
+    description: "Load and display notifications"
+    endpoint: "notifications"
+    onSuccess:
+      type: "showDialog"
+      title: "Notifications"
+    onFailure:
+      type: "showMessage"
+      messageType: "error"
+
+  # UI Actions
+  showMessage:
+    type: "ui"
+    description: "Display a message to the user"
+    parameters:
+      - name: "message"
+        type: "string"
+        required: true
+      - name: "messageType"
+        type: "string"
+        required: false
+        default: "info"
+        enum: ["success", "error", "warning", "info"]
+
+  showDialog:
+    type: "ui"
+    description: "Show a dialog to the user"
+    parameters:
+      - name: "title"
+        type: "string"
+        required: true
+      - name: "content"
+        type: "string"
+        required: false
+      - name: "actions"
+        type: "array"
+        required: false
+
+  # Form Actions
+  validateForm:
+    type: "form"
+    description: "Validate form fields"
+    parameters:
+      - name: "fields"
+        type: "array"
+        required: true
+
+  resetForm:
+    type: "form"
+    description: "Reset form to initial state"
+
+# Action Categories
+actionCategories:
+  navigation:
+    description: "Actions that change the current screen or route"
+    color: "#2196F3"
+  
+  authentication:
+    description: "Actions related to user authentication"
+    color: "#4CAF50"
+  
+  data:
+    description: "Actions that fetch or manipulate data"
+    color: "#FF9800"
+  
+  ui:
+    description: "Actions that manipulate the user interface"
+    color: "#9C27B0"
+  
+  form:
+    description: "Actions related to form handling"
+    color: "#607D8B"

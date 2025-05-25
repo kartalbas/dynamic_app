@@ -1,0 +1,47 @@
+endpoints:
+  # Authentication endpoints
+  login:
+    url: "https://wega.test.simetrix.ch/backend/api/v3/auth/token"
+    method: "POST"
+    timeout: 30
+    headers:
+      Content-Type: "application/json"
+  
+  logout:
+    url: "https://wega.test.simetrix.ch/backend/api/v3/auth/logout"
+    method: "POST"
+    requiresAuth: true
+  
+  refreshToken:
+    url: "https://wega.test.simetrix.ch/backend/api/v3/auth/refresh"
+    method: "POST"
+    requiresAuth: true
+
+  # User endpoints
+  profile:
+    url: "https://wega.test.simetrix.ch/backend/api/v3/user/profile"
+    method: "GET"
+    requiresAuth: true
+  
+  updateProfile:
+    url: "https://wega.test.simetrix.ch/backend/api/v3/user/profile"
+    method: "PUT"
+    requiresAuth: true
+
+  # Data endpoints
+  dashboard:
+    url: "https://wega.test.simetrix.ch/backend/api/v3/dashboard"
+    method: "GET"
+    requiresAuth: true
+  
+  notifications:
+    url: "https://wega.test.simetrix.ch/backend/api/v3/notifications"
+    method: "GET"
+    requiresAuth: true
+
+# Global network configuration
+networkConfig:
+  baseUrl: "https://wega.test.simetrix.ch/backend/api/v3"
+  defaultTimeout: 30
+  retryAttempts: 3
+  retryDelay: 1000

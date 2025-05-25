@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'json_theme.dart';
 import 'json_router.dart';
+import 'services/config_manager.dart';
 
 class DynamicApp extends StatelessWidget {
-  final Map<String, dynamic> config;
-  const DynamicApp({super.key, required this.config});
+  const DynamicApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     final themeData =
         JsonThemeInterpreter(
-          config['theme'],
-          config['textStyles'],
+          ConfigManager.theme,
+          ConfigManager.textStyles,
         ).toThemeData();
+
     return MaterialApp(
-      title: config['appName'] ?? 'Dynamic App',
+      title: ConfigManager.appName,
       theme: themeData,
       onGenerateRoute:
-          (settings) =>
-              JsonRouterInterpreter(config['routes']).onGenerateRoute(settings),
+          (settings) => JsonRouterInterpreter(
+            ConfigManager.routes ?? {},
+          ).onGenerateRoute(settings),
       initialRoute: '/',
       debugShowCheckedModeBanner: false,
     );

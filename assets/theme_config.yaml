@@ -1,0 +1,43 @@
+theme:
+  primaryColor: "#2196F3"      # Blue
+  secondaryColor: "#FF5722"    # Deep Orange
+  backgroundColor: "#FFFFFF"   # White
+  surfaceColor: "#F5F5F5"      # Very Light Gray
+  errorColor: "#F44336"        # Red
+  onPrimaryColor: "#FFFFFF"    # White
+  onSecondaryColor: "#FFFFFF"  # White
+  onBackgroundColor: "#000000" # Black
+  onSurfaceColor: "#000000"    # Black
+  onErrorColor: "#FFFFFF"      # White
+
+textStyles:
+  heading:
+    color: "#000000"           # Black
+    fontSize: 24
+    fontWeight: "bold"
+  subheading:
+    color: "#333333"           # Dark Gray
+    fontSize: 20
+    fontWeight: "w500"
+  body:
+    color: "#333333"           # Dark Gray
+    fontSize: 16
+    fontWeight: "normal"
+  caption:
+    color: "#666666"           # Medium Gray
+    fontSize: 12
+    fontWeight: "normal"
+  button:
+    color: "#FFFFFF"           # White
+    fontSize: 16
+    fontWeight: "w500"
+
+colorPalette:
+  primary: "#2196F3"           # Blue
+  secondary: "#FF5722"         # Deep Orange
+  success: "#4CAF50"           # Green
+  warning: "#FF9800"           # Orange
+  error: "#F44336"             # Red
+  info: "#2196F3"              # Blue
+  light: "#F5F5F5"             # Very Light Gray
+  dark: "#212121"              # Very Dark Gray
